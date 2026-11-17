@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 8px;
+            width: 80%;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Student Marks Calculator</h2>
+
+    <form id="marksForm">
+
+        <input type="number" id="m1"
+        placeholder="Subject 1 Marks" min="0" max="100" required>
+
+        <input type="number" id="m2"
+        placeholder="Subject 2 Marks" min="0" max="100" required>
+
+        <input type="number" id="m3"
+        placeholder="Subject 3 Marks" min="0" max="100" required>
+
+        <input type="number" id="m4"
+        placeholder="Subject 4 Marks" min="0" max="100" required>
+
+        <input type="number" id="m5"
+        placeholder="Subject 5 Marks" min="0" max="100" required>
+
+        <br><br>
+
+        <button type="submit">Calculate</button>
+        <button type="reset">Clear</button>
+
+    </form>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+document.getElementById("marksForm").onsubmit = function(e) {
+
+    e.preventDefault();
+
+    let m1 = Number(document.getElementById("m1").value);
+    let m2 = Number(document.getElementById("m2").value);
+    let m3 = Number(document.getElementById("m3").value);
+    let m4 = Number(document.getElementById("m4").value);
+    let m5 = Number(document.getElementById("m5").value);
+
+    let total = m1 + m2 + m3 + m4 + m5;
+
+    let average = total / 5;
+
+    let percentage = (total / 500) * 100;
+
+    let grade;
+
+    if (percentage >= 90)
+        grade = "A+";
+    else if (percentage >= 80)
+        grade = "A";
+    else if (percentage >= 70)
+        grade = "B";
+    else if (percentage >= 60)
+        grade = "C";
+    else if (percentage >= 50)
+        grade = "D";
+    else
+        grade = "Fail";
+
+    document.getElementById("result").innerHTML =
+        "<h3>Results</h3>" +
+        "Total Marks: " + total + "/500<br>" +
+        "Average: " + average.toFixed(2) + "<br>" +
+        "Percentage: " + percentage.toFixed(2) + "%<br>" +
+        "Grade: " + grade;
+};
+
+</script>
+
+</body>
+</html>
